@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import FloatingTool from "./FloatingTool";
 
 // --- (Keep your image imports) ---
-import swordImg from "../../assets/gifs/tools/sword.gif";
-import pickaxeImg from "../../assets/gifs/tools/picaxe.gif";
-import axeImg from "../../assets/gifs/tools/axe.gif";
-import shovelImg from "../../assets/gifs/tools/shovel.gif";
-import hoeImg from "../../assets/gifs/tools/hoe.gif";
+import swordImg from "../../assets/gifs/tools/sword.webp";
+import pickaxeImg from "../../assets/gifs/tools/picaxe.webp";
+import axeImg from "../../assets/gifs/tools/axe.webp";
+import shovelImg from "../../assets/gifs/tools/shovel.webp";
+import hoeImg from "../../assets/gifs/tools/hoe.webp";
 
 const availableTools = [
   { type: "sword", src: swordImg },
