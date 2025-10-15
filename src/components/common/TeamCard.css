@@ -7,6 +7,14 @@
   border-radius: 2rem !important; /* More rounded corners */
   border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
   overflow: hidden; /* Ensures rounded corners on image */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+  cursor: pointer; /* Indicate interactive element */
+}
+
+/* Card hover effect */
+.team-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
 /* Image Container Styling */
@@ -25,6 +33,14 @@
   height: 100%;
   object-fit: cover; /* Ensures image fills the container without distortion */
   border-radius: 1rem !important; /* Rounded corners for the image */
+  filter: grayscale(100%); /* Make image black and white by default */
+  transition: filter 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect to restore color and add slight zoom */
+.team-card:hover .team-card-img {
+  filter: grayscale(0%); /* Restore full color on hover */
+  transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Social Icons */
