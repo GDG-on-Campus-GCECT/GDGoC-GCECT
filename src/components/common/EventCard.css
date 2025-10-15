@@ -1,0 +1,15 @@
+.event-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: none; /* Remove default card border for a cleaner look */
+}
+
+.event-card:hover {
+  transform: translateY(-5px); /* Lift the card on hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important; /* Deeper shadow on hover */
+}
+
+/* Ensure the image has rounded corners that match the card */
+.event-card-img {
+  aspect-ratio: 16 / 9; /* Maintain a consistent aspect ratio for images */
+  object-fit: cover;
+}

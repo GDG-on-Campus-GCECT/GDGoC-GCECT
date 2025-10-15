@@ -1,0 +1,56 @@
+.contact-section {
+  /* Creates the subtle dot-grid background */
+  background-color: #f8f9fa;
+  background-image: radial-gradient(#d7d7d7 1px, transparent 0);
+  background-size: 20px 20px;
+  overflow: hidden;
+}
+
+.contact-illustration {
+  max-width: 80%; /* Control the size of the illustration */
+}
+
+.socials-content {
+  padding-left: 2rem;
+}
+
+.social-links {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+}
+
+.social-link-item {
+  font-size: 1.75rem;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.25rem 0;
+  transition: transform 0.2s ease-in-out;
+}
+
+.social-link-item:hover {
+  transform: translateX(10px); /* Nudge text to the right on hover */
+}
+
+/* Re-using Google color classes from ColorfulTitle.css */
+/* If you don't have these globally, add them here: */
+/*
+.text-google-green { color: #34A853; }
+.text-google-blue { color: #4285F4; }
+.text-google-red { color: #EA4335; }
+.text-google-yellow { color: #FBBC05; }
+*/
+
+/* Custom feedback button style */
+.btn-feedback {
+  border-radius: 50px !important; /* Pill shape */
+  padding: 10px 25px !important;
+  font-weight: bold;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 767.98px) {
+  .socials-content {
+    text-align: center;
+    padding-left: 0;
+  }
+}

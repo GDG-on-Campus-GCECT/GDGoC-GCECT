@@ -1,0 +1,79 @@
+/* Google Brand Colors */
+.text-google-blue {
+  color: #4285f4;
+}
+.text-google-red {
+  color: #ea4335;
+}
+.text-google-yellow {
+  color: #fbbc05;
+}
+.text-google-green {
+  color: #34a853;
+}
+
+
+
+/* Specific styling for main title */
+.colorful-main-title {
+  margin-bottom: 0.5rem;
+  font-size: 8rem !important;
+  white-space: nowrap; /* ✅ Prevents the title from wrapping to a new line */
+}
+
+/* Cleaned up styling for sub title */
+.colorful-sub-title {
+  color: #212529 !important;
+  text-shadow: none !important;
+  font-family: 'Roboto Mono', monospace;
+  height: 1.2em;
+  font-size: 4rem !important;
+}
+
+/* Classes for the bold-to-normal animation */
+.char-normal,
+.char-bold {
+  display: inline-block;
+  transition: font-weight 0.2s ease-in-out;
+}
+
+.char-normal {
+  font-weight: 400;
+}
+
+.char-bold {
+  font-weight: 900;
+}
+
+
+/* --- RESPONSIVE STYLES --- */
+
+/* For Tablets and smaller desktops */
+@media (max-width: 992px) {
+  .colorful-main-title {
+    font-size: 6rem !important;
+  }
+  .colorful-sub-title {
+    font-size: 3rem !important;
+  }
+}
+
+/* For small tablets and large phones */
+@media (max-width: 768px) {
+  .colorful-main-title {
+    font-size: 4.5rem !important;
+  }
+  .colorful-sub-title {
+    font-size: 2.25rem !important;
+  }
+}
+
+/* For mobile phones - uses viewport width for fluid scaling */
+@media (max-width: 576px) {
+  .colorful-main-title {
+    font-size: 10vw !important;
+  }
+  .colorful-sub-title {
+    font-size: 6vw !important;
+  }
+}

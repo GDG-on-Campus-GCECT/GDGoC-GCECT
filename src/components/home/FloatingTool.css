@@ -1,0 +1,19 @@
+.floating-tool {
+  position: absolute;
+  top: 0;  /* 👈 Add this line */
+  left: 0; /* 👈 Add this line */
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: auto;
+  
+  /* The main animation is now a smooth transition */
+  transition: transform 5s ease-out; 
+}
+
+/* When dragging, we want instant movement, not a slow transition */
+.floating-tool.dragging {
+  transition: none; /* Make dragging responsive */
+  cursor: grabbing;
+}

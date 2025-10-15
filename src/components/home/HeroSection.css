@@ -1,0 +1,137 @@
+/* Main Hero Container */
+.hero-minecraft {
+  position: relative;
+  width: 100%;
+  /* Use the exact height of your navbar here */
+  height: calc(100vh - 65px); /* 65px = navbar height */
+  background-color: #333;
+  overflow: hidden; /* Hides overflow content */
+}
+
+/* ...existing code... */
+
+/* Grid Background Layer */
+.interactive-grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--square-size));
+  background-color: #ffffff; /* White grid background */
+}
+
+/* ...existing code... */
+
+/* Content Layer (on top) */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Let clicks pass through except for children with pointer-events: auto */
+}
+
+/* Style for the main title */
+.hero-title-text {
+  font-size: 5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 4px 4px #000000;
+}
+
+/* Style for the subtitle */
+.hero-subtitle-text {
+  font-size: 1.25rem;
+  color: white;
+  text-shadow: 2px 2px #000000;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Re-enable clicks ONLY for the button component */
+.hero-content .minecraft-btn {
+  pointer-events: auto; /* Makes the button clickable */
+}
+
+/* ...existing code... */
+
+/* Individual Square Styling */
+.grid-square {
+  width: var(--square-size);
+  height: var(--square-size);
+  background-color: #ffffff; /* White square */
+  border: 1px solid #e0e0e0; /* Light gray border for subtle grid */
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.grid-square:hover {
+  background-color: #f5f5f5; /* Lighter hover effect */
+}
+
+.grid-square img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated; /* Sharp, blocky look */
+}
+/* --- Add these styles for the floating villager --- */
+
+.floating-villager {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  width: 150px; /* Adjust size as needed */
+  z-index: 3; /* Ensures it's on top of the grid (1) and content (2) */
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none; /* Make it so the image can't be clicked */
+}
+
+/* Keyframes for the floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px); /* How high it floats */
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* --- Add these new styles to the BOTTOM of your existing HeroSection.css file --- */
+
+/* --- RESPONSIVE STYLES --- */
+
+/* For small tablets and phones */
+@media (max-width: 768px) {
+  .floating-villager {
+    width: 100px; /* Make villager smaller */
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .hero-content .lead {
+    font-size: 1rem; /* Make tagline text smaller */
+    padding: 0 1rem; /* Add some horizontal padding */
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 576px) {
+  .floating-villager {
+    width: 80px; /* Even smaller */
+  }
+
+  /* Hides the long paragraph on very small screens to improve layout */
+  .hero-content .lead {
+    display: none;
+  }
+}

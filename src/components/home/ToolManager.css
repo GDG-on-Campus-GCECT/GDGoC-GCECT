@@ -1,0 +1,14 @@
+.tool-manager-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through its background */
+  z-index: 5; /* Above hero content (2) and grid (1) */
+}
+
+/* Ensure tools inside are clickable */
+.tool-manager-container .floating-tool {
+  pointer-events: auto; 
+}
