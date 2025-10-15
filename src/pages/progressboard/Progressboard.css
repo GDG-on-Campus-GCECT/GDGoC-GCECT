@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Progressboard Page Layout
+   ========================================================================== */
+
+.progressboard-page {
+  background-color: #f8f9fa; /* Light gray background for the entire page */
+  min-height: 100vh;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Header and Dark Mode Button
+   ========================================================================== */
+
+.progressboard-header .btn-dark-mode {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dee2e6;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.progressboard-header .btn-dark-mode:hover {
+  background-color: #e9ecef;
+}
+
+/* ==========================================================================
+   Statistic Cards (Total Participants & Highest Score)
+   ========================================================================== */
+
+.stat-card {
+  border: none;
+  border-radius: 1rem; /* Softer, rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card .card-body {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.stat-icon {
+  padding: 0.85rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #667eea; /* A nice purple-blue */
+  background-color: #eef0ff;
+}
+
+/* ==========================================================================
+   Rankings Card and Participant Rows
+   ========================================================================== */
+
+.rankings-card {
+  border: none;
+  border-radius: 1rem;
+}
+
+.participant-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f1f3f5; /* Lighter border between rows */
+}
+
+.participant-row:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   Rank Badges (Top 3 Styling)
+   ========================================================================== */
+
+.rank-badge {
+  font-size: 1rem;
+  font-weight: bold;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.25rem;
+  color: white;
+  flex-shrink: 0; /* Prevents the badge from shrinking */
+}
+
+.rank-gold { background-color: #ffc107; }   /* 1st Place */
+.rank-silver { background-color: #adb5bd; } /* 2nd Place */
+.rank-bronze { background-color: #cd7f32; } /* 3rd Place */
+.rank-default { background-color: #6c757d; } /* Other ranks */
+
+/* ==========================================================================
+   Load More Button
+   ========================================================================== */
+
+.btn-load-more {
+  border-radius: 50px; /* Pill shape */
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border: none;
+  padding: 12px 30px;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-load-more:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+}
+
+/* ==========================================================================
+   Responsive Adjustments for Mobile
+   ========================================================================== */
+
+@media (max-width: 576px) {
+  .participant-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .rank-badge {
+    margin-right: 1rem;
+  }
+}
+
