@@ -31,6 +31,13 @@ function AppNavbar() {
             >
               Events
             </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/progressboard"
+              className="fs-5 mx-2 nav-link-hover"
+            >
+              Progressboard
+            </Nav.Link>
             <Nav.Link as={Link} to="/team" className="fs-5 mx-2 nav-link-hover">
               Team
             </Nav.Link>

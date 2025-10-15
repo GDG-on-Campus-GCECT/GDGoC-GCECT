@@ -7,6 +7,7 @@ import HomePage from "./pages/home/HomePage";
 import EventsPage from "./pages/events/EventsPage";
 import TeamPage from "./pages/team/TeamPage";
 import ContactUsPage from "./pages/contactUs/ContactUsPage";
+import ProgressboardPage from "./pages/progressboard/progressboardPage";
 
 // Create the router configuration
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "events",
         element: <EventsPage />,
+      },
+      {
+        path: "progressboard",
+        element: <ProgressboardPage />,
       },
       {
         path: "team",

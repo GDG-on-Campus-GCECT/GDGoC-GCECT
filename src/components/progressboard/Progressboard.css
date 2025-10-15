@@ -1,0 +1,55 @@
+.progressboard-page {
+  background-color: #f8f9fa; /* Light background for the whole page */
+  min-height: 100vh;
+}
+
+.progressboard-header .btn-dark-mode {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card {
+  border: none;
+  border-radius: 1rem;
+}
+
+.stat-card .card-body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-icon {
+  color: #0d6efd;
+  background-color: #e7f1ff;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.rankings-card {
+  border: none;
+  border-radius: 1rem;
+}
+
+.participant-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.participant-row:last-child {
+  border-bottom: none;
+}
+
+.btn-load-more {
+  border-radius: 50px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border: none;
+  padding: 10px 25px;
+}
