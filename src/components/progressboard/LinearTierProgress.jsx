@@ -37,11 +37,13 @@ const LinearTierProgress = ({ participants = [] }) => {
   // Calculate participant counts
   const getParticipantCounts = () => {
     const totalParticipants = participants.length;
-    const participants20Plus = participants.filter((p) => p.score >= 20).length;
+    const participantsCompleted = participants.filter(
+      (p) => p.allCompleted === "Yes"
+    ).length;
 
     return {
       total: totalParticipants,
-      participants20Plus: participants20Plus,
+      participantsCompleted: participantsCompleted,
     };
   };
 
@@ -49,7 +51,7 @@ const LinearTierProgress = ({ participants = [] }) => {
 
   // Calculate progress percentage based on current position towards next milestone
   const getProgressPercentage = () => {
-    const current = counts.participants20Plus;
+    const current = counts.participantsCompleted;
 
     // If we have 100 or more, show full progress
     if (current >= 100) return 100;
@@ -74,29 +76,35 @@ const LinearTierProgress = ({ participants = [] }) => {
 
   // Animation effect
   useEffect(() => {
-    const timer = setTimeout(() => {
+    let initialTimer;
+    let animationTimer;
+
+    initialTimer = setTimeout(() => {
       setAnimatedProgress(progressPercentage);
-      setTimeout(() => setIsAnimating(false), 1000); // Stop animation after 1 second
+      animationTimer = setTimeout(() => setIsAnimating(false), 1000); // Stop animation after 1 second
     }, 100); // Small delay before starting animation
 
-    return () => clearTimeout(timer);
+    return () => {
+      if (initialTimer) clearTimeout(initialTimer);
+      if (animationTimer) clearTimeout(animationTimer);
+    };
   }, [progressPercentage]);
 
   // Function to calculate next tier unlock message
   const getNextTierMessage = () => {
     // Find the next tier that needs to be unlocked
     const nextTier = tiers.find(
-      (tier) => counts.participants20Plus < tier.requiredParticipants
+      (tier) => counts.participantsCompleted < tier.requiredParticipants
     );
 
     if (!nextTier) {
       // All tiers unlocked
-      return `All tiers unlocked! ${counts.participants20Plus} participants have 20+ scores`;
+      return `All tiers unlocked! ${counts.participantsCompleted} participants completed all badges & games`;
     }
 
     // Calculate how many more participants needed to unlock this tier
     const neededCount =
-      nextTier.requiredParticipants - counts.participants20Plus;
+      nextTier.requiredParticipants - counts.participantsCompleted;
     const tierNumber = nextTier.name.split(" ")[1];
 
     return `${neededCount} more completion${
@@ -106,7 +114,14 @@ const LinearTierProgress = ({ participants = [] }) => {
 
   return (
     <div className="linear-tier-progress">
-      <div className="progress-track">
+      <div
+        className="progress-track"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow={Math.round(progressPercentage)}
+        aria-label={`Participants who completed all badges & games: ${counts.participantsCompleted} of 100 needed for all tiers`}
+      >
         {/* Hybrid progress line - wavy for progress, straight for remaining */}
         <div className="hybrid-progress-container">
           {/* Background straight line */}
@@ -128,10 +143,9 @@ const LinearTierProgress = ({ participants = [] }) => {
                 <path
                   d="M0,4 Q2.5,1 5,4 T10,4 T15,4 T20,4 T25,4 T30,4 T35,4 T40,4 T45,4 T50,4 T55,4 T60,4 T65,4 T70,4 T75,4 T80,4 T85,4 T90,4 T95,4 L100,4"
                   stroke="#34a853"
-                  strokeWidth="1"
                   fill="none"
                   strokeLinecap="round"
-                  className={`wavy-line ${isAnimating ? "animating" : ""}`}
+                  className="wavy-line"
                 />
               </svg>
             </div>
@@ -141,7 +155,7 @@ const LinearTierProgress = ({ participants = [] }) => {
         {/* Tier markers */}
         {tiers.map((tier) => {
           const isUnlocked =
-            counts.participants20Plus >= tier.requiredParticipants;
+            counts.participantsCompleted >= tier.requiredParticipants;
 
           return (
             <div
@@ -171,7 +185,7 @@ const LinearTierProgress = ({ participants = [] }) => {
           );
         })}
 
-        {/* Current progress indicator for 20+ scores */}
+        {/* Current progress indicator for completed participants */}
         <div
           className={`current-score-indicator ${
             isAnimating ? "animating" : ""
@@ -181,7 +195,7 @@ const LinearTierProgress = ({ participants = [] }) => {
           <div className="score-marker">
             <div className="score-dot"></div>
             <div className="score-label">
-              <span className="score-text">{counts.participants20Plus}</span>
+              <span className="score-text">{counts.participantsCompleted}</span>
             </div>
           </div>
         </div>

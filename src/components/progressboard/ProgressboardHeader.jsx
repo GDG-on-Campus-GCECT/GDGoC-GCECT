@@ -12,7 +12,7 @@ const ProgressboardHeader = ({ participants }) => {
           </p>
         </div>
         <div className="progressboard-header-progress">
-          <LinearTierProgress participants={participants || []} />
+          <LinearTierProgress participants={participants} />
         </div>
       </div>
     </header>
