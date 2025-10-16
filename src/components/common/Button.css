@@ -4,7 +4,7 @@
 
 .minecraft-btn {
   /* Font and Text */
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 1.25rem;
   color: #000000 !important; /* Use !important to override Bootstrap's text color */
   text-shadow: 2px 2px #000000a0;
@@ -12,38 +12,34 @@
   /* Core Appearance */
   background-color: #707070;
   border-radius: 0 !important; /* Override Bootstrap's rounded corners for a blocky feel */
-  
+
   /* 3D "pixel art" effect using box-shadow */
-  box-shadow: 
-    inset -3px -3px 0 0 #373737, /* Inner dark shadow */
-    inset 3px 3px 0 0 #A8A8A8;   /* Inner light highlight */
-  
+  box-shadow: inset -3px -3px 0 0 #373737,
+    /* Inner dark shadow */ inset 3px 3px 0 0 #a8a8a8; /* Inner light highlight */
+
   /* Remove Bootstrap's default blue glow on focus/active */
   --bs-btn-focus-shadow-rgb: none;
-  
-  transition: all 0.1s ease-in-out;
+
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out,
+    transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
 /* Hover State */
 .minecraft-btn:hover:not(:disabled) {
   background-color: #818181;
-  color: #FFFFFF !important;
+  color: #ffffff !important;
 }
 
 /* Active (click) State: "Presses" the button in */
 .minecraft-btn:active:not(:disabled) {
   transform: translateY(2px);
-  box-shadow: 
-    inset -1px -1px 0 0 #373737, 
-    inset 1px 1px 0 0 #A8A8A8;
+  box-shadow: inset -1px -1px 0 0 #373737, inset 1px 1px 0 0 #a8a8a8;
 }
 
 /* Disabled State */
 .minecraft-btn:disabled {
   background-color: #555;
-  color: #9E9E9E !important;
+  color: #9e9e9e !important;
   text-shadow: none;
-  box-shadow: 
-    inset -3px -3px 0 0 #303030,
-    inset 3px 3px 0 0 #757575;
+  box-shadow: inset -3px -3px 0 0 #303030, inset 3px 3px 0 0 #757575;
 }

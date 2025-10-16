@@ -1,12 +1,11 @@
 import React, { useState, useMemo } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { getSortedParticipants } from "../../data/progressboardData";
 import ProgressboardHeader from "../../components/progressboard/ProgressboardHeader";
 import StatsCards from "../../components/progressboard/StatsCard";
 import SearchBar from "../../components/progressboard/SeachBar";
 import RankingsList from "../../components/progressboard/RankingsList";
 import ParticipantDetailsModal from "../../components/progressboard/ParticipantDetailsModal";
-import { Button } from "react-bootstrap";
 import "./Progressboard.css";
 
 const ITEMS_PER_PAGE = 10;

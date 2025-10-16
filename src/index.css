@@ -5,7 +5,8 @@
   top: 0;
   z-index: 1020;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease;
   background-color: rgba(
     248,
     249,
