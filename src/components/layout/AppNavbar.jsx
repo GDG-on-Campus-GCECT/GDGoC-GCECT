@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom"; // 👈 Import Link
 import logo from "../../assets/images/logo.png";
 
 function AppNavbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50); // Add translucent effect after 50px scroll
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <Navbar bg="light" expand="lg" className="border-bottom google-font-navbar">
+    <Navbar
+      bg="light"
+      expand="lg"
+      className={`border-bottom google-font-navbar ${
+        isScrolled ? "navbar-scrolled" : ""
+      }`}
+    >
       <Container>
         {/* 👇 Use as={Link} and to="/" */}
         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
