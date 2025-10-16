@@ -3,12 +3,11 @@ import LinearTierProgress from "./LinearTierProgress";
 
 const ProgressboardHeader = ({ participants }) => {
   return (
-    <header className="progressboard-header mb-4">
+    <header className="progressboard-header mb-3">
       <div className="progressboard-header-with-progress">
         <div className="progressboard-header-text">
-          <h1 className="h4 fw-bold mb-0">GDG On Campus GCECT</h1>
-          <p className="text-muted mb-2">Cloud Study Jams Progressboard</p>
-          <p className="small text-muted">
+          <h1 className="h2 fw-bold mb-1">Cloud Study Jams Progressboard</h1>
+          <p className="text-muted mb-0">
             If your name is not on the list, contact an organizer.
           </p>
         </div>

@@ -47,8 +47,6 @@ const LinearTierProgress = ({ participants = [] }) => {
 
   const counts = getParticipantCounts();
 
-
-
   // Calculate progress percentage based on current position towards next milestone
   const getProgressPercentage = () => {
     const current = counts.participants20Plus;
@@ -109,13 +107,35 @@ const LinearTierProgress = ({ participants = [] }) => {
   return (
     <div className="linear-tier-progress">
       <div className="progress-track">
-        {/* Background progress line */}
-        <div className="progress-line">
-          {/* Progress fill based on participants with 20+ scores */}
-          <div
-            className={`progress-fill ${isAnimating ? "animating" : ""}`}
-            style={{ width: `${animatedProgress}%` }}
-          ></div>
+        {/* Hybrid progress line - wavy for progress, straight for remaining */}
+        <div className="hybrid-progress-container">
+          {/* Background straight line */}
+          <div className="progress-line">
+            <div className="progress-bg"></div>
+
+            {/* Wavy progress section - only up to current progress */}
+            <div
+              className={`wavy-progress-section ${
+                isAnimating ? "animating" : ""
+              }`}
+              style={{ width: `${animatedProgress}%` }}
+            >
+              <svg
+                className="wavy-svg"
+                viewBox="0 0 100 8"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,4 Q2.5,1 5,4 T10,4 T15,4 T20,4 T25,4 T30,4 T35,4 T40,4 T45,4 T50,4 T55,4 T60,4 T65,4 T70,4 T75,4 T80,4 T85,4 T90,4 T95,4 L100,4"
+                  stroke="#34a853"
+                  strokeWidth="1"
+                  fill="none"
+                  strokeLinecap="round"
+                  className={`wavy-line ${isAnimating ? "animating" : ""}`}
+                />
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* Tier markers */}
@@ -145,9 +165,7 @@ const LinearTierProgress = ({ participants = [] }) => {
               </div>
               <div className="tier-marker-label">
                 <span className="tier-name">{tier.name}</span>
-                <span className="tier-score">
-                  {tier.requiredParticipants} needed
-                </span>
+                <span className="tier-score">{tier.requiredParticipants}</span>
               </div>
             </div>
           );

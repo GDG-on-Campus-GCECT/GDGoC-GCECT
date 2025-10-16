@@ -178,29 +178,61 @@
 .progress-track {
   position: relative;
   height: 100px;
-  margin: 1.5rem 0;
+  margin: 0.75rem 0;
 }
 
-.progress-line {
+.hybrid-progress-container {
   position: absolute;
   top: 50%;
   left: 0;
   right: 0;
-  height: 4px;
-  background-color: #e5e7eb;
-  border-radius: 2px;
+  height: 8px;
   transform: translateY(-50%);
 }
 
-.progress-fill {
+.progress-line {
+  position: relative;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #10b981 0%, #059669 50%, #047857 100%);
+}
+
+.progress-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #e5e7eb;
   border-radius: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.wavy-progress-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
   transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.progress-fill.animating {
+.wavy-progress-section.animating {
   transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wavy-svg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  transform: translateY(-50%);
+}
+
+.wavy-line {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 4;
 }
 
 .tier-marker {
@@ -210,7 +242,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
 }
 
 .tier-marker-icon {
@@ -278,7 +310,7 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 3;
+  z-index: 4;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease,
@@ -368,7 +400,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .progressboard-header-text {
@@ -385,7 +417,7 @@
   .progressboard-header-with-progress {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .progressboard-header-progress {
@@ -393,7 +425,6 @@
     max-width: none;
   }
 }
-
 @media (max-width: 768px) {
   .linear-tier-progress {
     max-width: none;
@@ -401,7 +432,7 @@
 
   .progress-track {
     height: 90px;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
   }
 
   .tier-marker-icon {
