@@ -1,6 +1,30 @@
 /* Apply the Google Font to our specific navbar */
 .google-font-navbar {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background-color: rgba(
+    248,
+    249,
+    250,
+    1
+  ) !important; /* Default opaque background */
+}
+
+/* Translucent navbar when scrolled */
+.google-font-navbar.navbar-scrolled {
+  background-color: rgba(
+    248,
+    249,
+    250,
+    0.85
+  ) !important; /* Semi-transparent background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* --- Your existing hover styles --- */
@@ -8,11 +32,11 @@
   position: relative;
   text-decoration: none;
   /* 👇 Increased padding for the larger font size */
-  padding-bottom: 8px; 
+  padding-bottom: 8px;
 }
 
 .nav-link-hover::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
