@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { FaMedal, FaTrophy, FaCrown, FaUsers } from "react-icons/fa";
+import {
+  FaMedal,
+  FaTrophy,
+  FaCrown,
+  FaUsers,
+  FaBullseye,
+} from "react-icons/fa";
 
 const LinearTierProgress = ({ participants = [] }) => {
   // Animation state
@@ -48,6 +54,18 @@ const LinearTierProgress = ({ participants = [] }) => {
   };
 
   const counts = getParticipantCounts();
+
+  // Overall score calculations (each participant max 20)
+  const MAX_SCORE_PER_PARTICIPANT = 20;
+  const totalPossibleScore = participants.length * MAX_SCORE_PER_PARTICIPANT;
+  const totalCompletedScore = participants.reduce(
+    (sum, p) => sum + (Number(p.score) || 0),
+    0
+  );
+  const overallScorePercentage =
+    totalPossibleScore > 0
+      ? (totalCompletedScore / totalPossibleScore) * 100
+      : 0;
 
   // Calculate progress percentage based on current position towards next milestone
   const getProgressPercentage = () => {
@@ -206,6 +224,14 @@ const LinearTierProgress = ({ participants = [] }) => {
         <div className="progress-stat">
           <FaUsers size={12} className="me-1" />
           <span>{getNextTierMessage()}</span>
+        </div>
+
+        <div className="progress-stat">
+          <FaBullseye size={12} className="me-1" />
+          <span>
+            <strong>{overallScorePercentage.toFixed(2)}%</strong> of total score
+            achieved ({totalCompletedScore} / {totalPossibleScore})
+          </span>
         </div>
       </div>
     </div>
