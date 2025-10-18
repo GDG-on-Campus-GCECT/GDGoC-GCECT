@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { FaChevronRight } from 'react-icons/fa';
 
 /**
  * Determines the CSS class for the rank badge based on the rank number.
@@ -42,8 +43,9 @@ const RankingsList = ({ participants, onShowDetails }) => {
                   </p>
                 </div>
               </div>
-              <Button variant="primary" size="sm" onClick={() => onShowDetails(participant)}>
-                More Details
+              <Button variant="primary" size="sm" onClick={() => onShowDetails(participant)} className="more-details-btn">
+                <span className="d-none d-md-inline">More Details</span>
+                <FaChevronRight className="d-md-none" size={14} />
               </Button>
             </div>
           ))
