@@ -133,21 +133,286 @@
 } /* Other ranks */
 
 /* ==========================================================================
-   Load More Button
+   Load More Button - GDG Design Language
    ========================================================================== */
 
 .btn-load-more {
   border-radius: 50px; /* Pill shape */
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background-color: #34a853;
   border: none;
-  padding: 12px 30px;
-  font-weight: 500;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 14px 32px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(52, 168, 83, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-load-more:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+  transform: translateY(-3px);
+  background-color: #2e7d48;
+  box-shadow: 0 8px 25px rgba(52, 168, 83, 0.3);
+  color: #ffffff;
+}
+
+.btn-load-more:focus {
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.25);
+  color: #ffffff;
+}
+
+.btn-load-more:active {
+  transform: translateY(-1px);
+}
+
+/* Add a subtle animation */
+.btn-load-more::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.btn-load-more:hover::before {
+  left: 100%;
+}
+
+/* Load More Section Container */
+.load-more-container {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 2rem;
+  border: 1px solid rgba(66, 133, 244, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.load-more-info {
+  color: #5f6368;
+  font-weight: 500;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.load-more-info .text-google-blue {
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Reward Preview Modal
+   ========================================================================== */
+
+.reward-preview-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.reward-preview-modal {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+  max-height: 85vh;
+  overflow: hidden;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.reward-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.reward-preview-title {
+  display: flex;
+  align-items: center;
+}
+
+.reward-preview-title h3 {
+  margin: 0;
+  color: #1f2937;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.reward-preview-close {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reward-preview-close:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.reward-preview-content {
+  padding: 2rem;
+  max-height: 65vh;
+  overflow-y: auto;
+}
+
+.tier-image-container {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.tier-reward-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  border: 3px solid #ffffff;
+}
+
+.tier-reward-image:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.reward-preview-description {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.rewards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.reward-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 4px solid #34a853;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reward-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(52, 168, 83, 0.1);
+}
+
+.reward-icon {
+  background: #34a853;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.reward-details h4 {
+  margin: 0 0 0.25rem 0;
+  color: #1f2937;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.reward-details p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.reward-note {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.reward-note p {
+  margin: 0;
+  color: #1e40af;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Responsive Design for Reward Modal */
+@media (max-width: 768px) {
+  .reward-preview-modal {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+
+  .reward-preview-header {
+    padding: 1rem 1.5rem;
+  }
+
+  .reward-preview-content {
+    padding: 1.5rem;
+  }
+
+  .reward-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .reward-preview-title h3 {
+    font-size: 1.1rem;
+  }
 }
 
 /* ==========================================================================
@@ -279,6 +544,21 @@
 .tier-marker.active .tier-marker-icon {
   transform: scale(1.1);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Clickable tier markers */
+.tier-marker.clickable {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.tier-marker.clickable:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.tier-marker.clickable:hover .tier-marker-icon {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .tier-marker-label {

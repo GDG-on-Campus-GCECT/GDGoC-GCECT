@@ -47,7 +47,7 @@ function ProgressboardPage() {
 
         {/* Load More Section */}
         {visibleCount < filteredParticipants.length && (
-          <div className="text-center mt-4">
+          <div className="load-more-container text-center">
             <Button
               variant="primary"
               className="btn-load-more"
@@ -60,8 +60,12 @@ function ProgressboardPage() {
               )}{" "}
               Participants
             </Button>
-            <p className="text-muted small mt-2">
-              Showing {visibleCount} of {filteredParticipants.length}{" "}
+            <p className="load-more-info">
+              Showing <span className="text-google-blue">{visibleCount}</span>{" "}
+              of{" "}
+              <span className="text-google-green">
+                {filteredParticipants.length}
+              </span>{" "}
               participants
             </p>
           </div>

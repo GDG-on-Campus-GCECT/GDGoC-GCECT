@@ -5,12 +5,26 @@ import {
   FaCrown,
   FaUsers,
   FaBullseye,
+  FaTimes,
+  FaGift,
+  FaTshirt,
+  FaHeart,
+  FaBriefcase,
 } from "react-icons/fa";
+
+// Import tier reward images
+import tier1Image from "../../assets/images/swags/tier_1.jpg";
+import tier2Image from "../../assets/images/swags/tier_2.jpg";
+import tier3Image from "../../assets/images/swags/tier_3.jpg";
 
 const LinearTierProgress = ({ participants = [] }) => {
   // Animation state
   const [animatedProgress, setAnimatedProgress] = useState(0);
   const [isAnimating, setIsAnimating] = useState(true);
+
+  // Reward preview state
+  const [showRewardPreview, setShowRewardPreview] = useState(false);
+  const [selectedTier, setSelectedTier] = useState(null);
 
   // Tier thresholds based on number of participants with 20+ scores
   const tiers = [
@@ -21,6 +35,24 @@ const LinearTierProgress = ({ participants = [] }) => {
       position: 33.33,
       color: "#cd7f32",
       bgColor: "#f4e4bc",
+      image: tier3Image,
+      rewards: [
+        {
+          name: "GDG T-Shirt",
+          description: "Official GDG branded t-shirt",
+          icon: FaTshirt,
+        },
+        {
+          name: "GDG Stickers",
+          description: "Exclusive GDG sticker pack",
+          icon: FaHeart,
+        },
+        {
+          name: "Digital Certificate",
+          description: "Cloud Study Jams completion certificate",
+          icon: FaMedal,
+        },
+      ],
     },
     {
       name: "Tier 2",
@@ -29,6 +61,29 @@ const LinearTierProgress = ({ participants = [] }) => {
       position: 66.66,
       color: "#c0c0c0",
       bgColor: "#f0f0f0",
+      image: tier2Image,
+      rewards: [
+        {
+          name: "GDG Water Bottle",
+          description: "Premium insulated water bottle",
+          icon: FaGift,
+        },
+        {
+          name: "GDG T-Shirt",
+          description: "Official GDG branded t-shirt",
+          icon: FaTshirt,
+        },
+        {
+          name: "GDG Stickers",
+          description: "Exclusive GDG sticker pack",
+          icon: FaHeart,
+        },
+        {
+          name: "Digital Certificate",
+          description: "Cloud Study Jams completion certificate",
+          icon: FaMedal,
+        },
+      ],
     },
     {
       name: "Tier 1",
@@ -37,6 +92,34 @@ const LinearTierProgress = ({ participants = [] }) => {
       position: 100,
       color: "#ffd700",
       bgColor: "#fff8dc",
+      image: tier1Image,
+      rewards: [
+        {
+          name: "GDG Bag",
+          description: "Premium GDG branded bag",
+          icon: FaBriefcase,
+        },
+        {
+          name: "GDG Water Bottle",
+          description: "Premium insulated water bottle",
+          icon: FaGift,
+        },
+        {
+          name: "GDG T-Shirt",
+          description: "Official GDG branded t-shirt",
+          icon: FaTshirt,
+        },
+        {
+          name: "GDG Stickers",
+          description: "Exclusive GDG sticker pack",
+          icon: FaHeart,
+        },
+        {
+          name: "Digital Certificate",
+          description: "Cloud Study Jams completion certificate",
+          icon: FaMedal,
+        },
+      ],
     },
   ];
 
@@ -130,6 +213,18 @@ const LinearTierProgress = ({ participants = [] }) => {
     } to unlock Tier ${tierNumber}`;
   };
 
+  // Handle tier icon click
+  const handleTierClick = (tier) => {
+    setSelectedTier(tier);
+    setShowRewardPreview(true);
+  };
+
+  // Close reward preview
+  const closeRewardPreview = () => {
+    setShowRewardPreview(false);
+    setSelectedTier(null);
+  };
+
   return (
     <div className="linear-tier-progress">
       <div
@@ -178,8 +273,12 @@ const LinearTierProgress = ({ participants = [] }) => {
           return (
             <div
               key={tier.name}
-              className={`tier-marker ${isUnlocked ? "unlocked" : "locked"}`}
+              className={`tier-marker ${isUnlocked ? "unlocked" : "locked"} ${
+                isUnlocked ? "clickable" : ""
+              }`}
               style={{ left: `${tier.position}%` }}
+              onClick={() => isUnlocked && handleTierClick(tier)}
+              title={isUnlocked ? "Click to view rewards" : "Tier locked"}
             >
               <div
                 className="tier-marker-icon"
@@ -234,6 +333,70 @@ const LinearTierProgress = ({ participants = [] }) => {
           </span>
         </div>
       </div>
+
+      {/* Reward Preview Modal */}
+      {showRewardPreview && selectedTier && (
+        <div className="reward-preview-overlay" onClick={closeRewardPreview}>
+          <div
+            className="reward-preview-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="reward-preview-header">
+              <div className="reward-preview-title">
+                <selectedTier.icon
+                  size={24}
+                  style={{ color: selectedTier.color, marginRight: "10px" }}
+                />
+                <h3>{selectedTier.name} Rewards</h3>
+              </div>
+              <button
+                className="reward-preview-close"
+                onClick={closeRewardPreview}
+                aria-label="Close reward preview"
+              >
+                <FaTimes size={18} />
+              </button>
+            </div>
+
+            <div className="reward-preview-content">
+              {/* Tier Image */}
+              <div className="tier-image-container">
+                <img
+                  src={selectedTier.image}
+                  alt={`${selectedTier.name} rewards`}
+                  className="tier-reward-image"
+                />
+              </div>
+
+              <p className="reward-preview-description">
+                Congratulations everyone! We've unlocked the following rewards:
+              </p>
+
+              <div className="rewards-grid">
+                {selectedTier.rewards.map((reward, index) => (
+                  <div key={index} className="reward-item">
+                    <div className="reward-icon">
+                      <reward.icon size={20} />
+                    </div>
+                    <div className="reward-details">
+                      <h4>{reward.name}</h4>
+                      <p>{reward.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="reward-note">
+                <p>
+                  <strong>Note:</strong> Rewards will be distributed at the end
+                  of the Cloud Study Jams period. Contact organizers for more
+                  details.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
