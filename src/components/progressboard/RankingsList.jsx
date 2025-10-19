@@ -1,6 +1,6 @@
-import React from 'react';
-import { Card, Button } from 'react-bootstrap';
-import { FaChevronRight } from 'react-icons/fa';
+import React from "react";
+import { Card, Button } from "react-bootstrap";
+import { FaChevronRight } from "react-icons/fa";
 
 /**
  * Determines the CSS class for the rank badge based on the rank number.
@@ -8,10 +8,10 @@ import { FaChevronRight } from 'react-icons/fa';
  * @returns {string} The CSS class for the rank badge.
  */
 const getRankClass = (rank) => {
-  if (rank === 1) return 'rank-gold';
-  if (rank === 2) return 'rank-silver';
-  if (rank === 3) return 'rank-bronze';
-  return 'rank-default';
+  if (rank === 1) return "rank-gold";
+  if (rank === 2) return "rank-silver";
+  if (rank === 3) return "rank-bronze";
+  return "rank-default";
 };
 
 /**
@@ -25,25 +25,36 @@ const RankingsList = ({ participants, onShowDetails }) => {
     <Card className="rankings-card shadow-sm">
       <Card.Header>
         <h5 className="mb-0">Cloud Study Jams Rankings</h5>
-        <p className="small text-muted mb-0">Data from Google Sheets (updated daily)</p>
+        <p className="small text-muted mb-0">
+          Data from Google Sheets (updated daily)
+        </p>
       </Card.Header>
       <Card.Body>
         {participants.length > 0 ? (
           participants.map((participant) => (
             <div key={participant.id} className="participant-row">
-              <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center flex-grow-1">
                 {/* Use participant.rank to show the correct rank and get the right class */}
-                <span className={`rank-badge ${getRankClass(participant.rank)}`}>
+                <span
+                  className={`rank-badge ${getRankClass(participant.rank)}`}
+                >
                   {participant.rank}
                 </span>
-                <div>
+                <div className="flex-grow-1">
                   <h6 className="fw-bold mb-0">{participant.name}</h6>
                   <p className="small text-muted mb-0">
-                    Score: {participant.score} • {participant.skillBadges} Skill Badges + {participant.arcadeGames} Arcade Games
+                    Score: {participant.score} • {participant.skillBadges} Skill
+                    Badges + {participant.arcadeGames} Arcade Games
                   </p>
                 </div>
               </div>
-              <Button variant="primary" size="sm" onClick={() => onShowDetails(participant)} className="more-details-btn">
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={() => onShowDetails(participant)}
+                className="more-details-btn"
+                aria-label={`View details for ${participant.name}`}
+              >
                 <span className="d-none d-md-inline">More Details</span>
                 <FaChevronRight className="d-md-none" size={14} />
               </Button>
@@ -58,4 +69,3 @@ const RankingsList = ({ participants, onShowDetails }) => {
 };
 
 export default RankingsList;
-
