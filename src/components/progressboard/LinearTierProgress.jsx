@@ -200,7 +200,13 @@ const LinearTierProgress = ({ participants = [] }) => {
 
     if (!nextTier) {
       // All tiers unlocked
-      return `All tiers unlocked! ${counts.participantsCompleted} participants completed all badges & games`;
+      return (
+        <>
+          All tiers unlocked!{" "}
+          <span className="bold-text">{counts.participantsCompleted}</span>{" "}
+          participants completed all badges & games
+        </>
+      );
     }
 
     // Calculate how many more participants needed to unlock this tier
@@ -208,9 +214,13 @@ const LinearTierProgress = ({ participants = [] }) => {
       nextTier.requiredParticipants - counts.participantsCompleted;
     const tierNumber = nextTier.name.split(" ")[1];
 
-    return `${neededCount} more completion${
-      neededCount !== 1 ? "s" : ""
-    } to unlock Tier ${tierNumber}`;
+    return (
+      <>
+        <span className="bold-text">{neededCount}</span> more completion
+        {neededCount !== 1 ? "s" : ""} to unlock{" "}
+        <span className="bold-text">Tier {tierNumber}</span>
+      </>
+    );
   };
 
   // Handle tier icon click
@@ -328,8 +338,12 @@ const LinearTierProgress = ({ participants = [] }) => {
         <div className="progress-stat">
           <FaBullseye size={12} className="me-1" />
           <span>
-            <strong>{overallScorePercentage.toFixed(2)}%</strong> of total score
-            achieved ({totalCompletedScore} / {totalPossibleScore})
+            <span className="bold-text">
+              {overallScorePercentage.toFixed(2)}%
+            </span>{" "}
+            of total score achieved (
+            <span className="bold-text">{totalCompletedScore}</span> /{" "}
+            <span className="bold-text">{totalPossibleScore}</span>)
           </span>
         </div>
       </div>
