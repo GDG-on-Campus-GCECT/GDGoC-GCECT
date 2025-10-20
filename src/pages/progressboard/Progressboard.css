@@ -1,5 +1,5 @@
 /* Import Google Fonts for elegant typography */
-@import url("https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single+Ink:wght@100..900&family=Bitcount+Grid+Single:wght@100..900&family=Bitcount+Prop+Double+Ink:wght@100..900&family=Dancing+Script:wght@400..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Licorice&family=Pacifico&family=Press+Start+2P&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 /* ==========================================================================
    Progressboard Page Layout
    ========================================================================== */
@@ -26,6 +26,24 @@
   line-height: 1.3;
   position: relative;
   padding-bottom: 0.2rem;
+  /* Optimizations for better text rendering */
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent text overflow and ensure it stays within screen bounds */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  /* Container constraints */
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .progressboard-elegant-title::before {
@@ -97,13 +115,27 @@
   }
 }
 
-/* Responsive adjustments for the elegant title */
-@media (max-width: 768px) {
+/* ========================================================================== 
+   Comprehensive Responsive Design for All Devices
+   ========================================================================== */
+
+/* Large Desktop (1200px and up) - Default styles above */
+
+/* Medium Desktop/Laptop (992px - 1199px) */
+@media (max-width: 1199.98px) {
   .progressboard-elegant-title {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
+    letter-spacing: 0.015em;
+  }
+}
+
+/* Small Desktop/Large Tablet (768px - 991px) */
+@media (max-width: 991.98px) {
+  .progressboard-elegant-title {
+    font-size: 2.5rem;
     letter-spacing: 0.01em;
-    line-height: 1.3;
-    padding-bottom: 0.15rem;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
   }
 
   .progressboard-elegant-subtitle {
@@ -112,17 +144,105 @@
   }
 }
 
-@media (max-width: 480px) {
+/* Tablet Portrait (576px - 767px) */
+@media (max-width: 767.98px) {
   .progressboard-elegant-title {
-    font-size: 2.8rem;
+    font-size: 1.8rem;
     letter-spacing: 0;
-    line-height: 1.3;
-    padding-bottom: 0.1rem;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.15rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
   }
 
   .progressboard-elegant-subtitle {
     font-size: 0.9rem;
     letter-spacing: 0.02em;
+  }
+
+  .progressboard-title-container {
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+/* Large Mobile (480px - 575px) */
+@media (max-width: 575.98px) {
+  .progressboard-elegant-title {
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    word-break: break-word;
+    hyphens: auto;
+    text-align: center;
+  }
+
+  .progressboard-elegant-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.015em;
+  }
+}
+
+/* Small Mobile (360px - 479px) */
+@media (max-width: 479.98px) {
+  .progressboard-elegant-title {
+    font-size: 1.1rem;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.05rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    word-break: break-word;
+    hyphens: auto;
+    text-align: center;
+  }
+
+  .progressboard-elegant-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* Extra Small Mobile (320px - 359px) */
+@media (max-width: 359.98px) {
+  .progressboard-elegant-title {
+    font-size: 0.9rem;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 0.2rem;
+    padding-bottom: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    word-break: break-word;
+    hyphens: auto;
+    text-align: center;
+  }
+
+  .progressboard-elegant-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.005em;
+  }
+}
+
+/* Ultra Wide Screens (1600px and up) */
+@media (min-width: 1600px) {
+  .progressboard-elegant-title {
+    font-size: 3.5rem;
+    letter-spacing: 0.025em;
+  }
+
+  .progressboard-elegant-subtitle {
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
   }
 }
 
