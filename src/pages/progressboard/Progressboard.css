@@ -27,7 +27,6 @@
   position: relative;
   padding-bottom: 0.2rem;
   /* Optimizations for better text rendering */
-  font-display: swap;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -36,7 +35,6 @@
   max-width: 100%;
   box-sizing: border-box;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   word-break: break-word;
   white-space: normal;
   /* Container constraints */
@@ -1105,11 +1103,29 @@
 @media (max-width: 768px) {
   .linear-tier-progress {
     max-width: none;
+    padding: 0 1rem; /* Add horizontal padding */
+    overflow: visible; /* Ensure content isn't clipped */
   }
 
   .progress-track {
     height: 90px;
     margin: 0.5rem 0;
+    overflow: visible; /* Prevent clipping of tier markers */
+  }
+
+  .hybrid-progress-container {
+    left: 0.5rem;
+    right: 0.5rem; /* Add margin to prevent edge overflow */
+  }
+
+  .tier-marker {
+    /* Adjust positioning to account for container padding */
+    transform: translate(-50%, -50%);
+  }
+
+  /* Specific adjustment for rightmost tier (Tier 1 at 100%) */
+  .tier-marker[style*="left: 100%"] {
+    left: calc(100% - 1rem) !important; /* Pull back from the edge */
   }
 
   .tier-marker-icon {
@@ -1153,6 +1169,20 @@
 }
 
 @media (max-width: 480px) {
+  .linear-tier-progress {
+    padding: 0 0.75rem; /* Increased padding for smaller screens */
+  }
+
+  .hybrid-progress-container {
+    left: 0.75rem;
+    right: 0.75rem; /* More margin on small screens */
+  }
+
+  /* More aggressive adjustment for rightmost tier on small screens */
+  .tier-marker[style*="left: 100%"] {
+    left: calc(100% - 1.5rem) !important; /* Pull further back on small screens */
+  }
+
   .linear-progress-info {
     font-size: 0.7rem;
     gap: 0.5rem;
@@ -1166,5 +1196,33 @@
     line-height: 1.4;
     min-width: 200px;
     padding: 0.4rem 0.5rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .linear-tier-progress {
+    padding: 0 0.5rem;
+  }
+
+  .hybrid-progress-container {
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .tier-marker[style*="left: 100%"] {
+    left: calc(100% - 2rem) !important; /* Maximum pullback for tiny screens */
+  }
+
+  .tier-marker-label {
+    min-width: 40px;
+  }
+
+  .tier-name {
+    font-size: 0.6rem;
+  }
+
+  .tier-score {
+    font-size: 0.55rem;
   }
 }
