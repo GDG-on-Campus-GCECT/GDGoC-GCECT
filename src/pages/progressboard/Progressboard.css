@@ -777,18 +777,61 @@
 
 .linear-progress-info {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #6b7280;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #4b5563;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
 }
 
 .progress-stat {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  font-weight: 500;
+  gap: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  min-width: 280px;
+}
+
+.progress-stat:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.progress-stat svg {
+  color: #3b82f6;
+  filter: drop-shadow(0 1px 2px rgba(59, 130, 246, 0.3));
+  transition: all 0.3s ease;
+}
+
+.progress-stat:hover svg {
+  color: #2563eb;
+  transform: scale(1.1);
+}
+
+.progress-stat strong {
+  color: #1e40af;
+  font-weight: 700;
+}
+
+/* Make numbers and tier names bold in progress text */
+.progress-stat .bold-text {
+  font-weight: 700;
+  color: #1e40af;
 }
 
 /* Header with Linear Progress Layout */
@@ -860,6 +903,31 @@
   }
 
   .progress-stat {
+    font-size: 0.75rem;
+    min-width: 240px;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .linear-progress-info {
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .linear-progress-info {
     font-size: 0.7rem;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .progress-stat {
+    flex-wrap: wrap;
+    justify-content: center;
+    line-height: 1.4;
+    min-width: 200px;
+    padding: 0.4rem 0.5rem;
   }
 }
