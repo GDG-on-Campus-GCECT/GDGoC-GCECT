@@ -12,6 +12,7 @@ import {
   FaGamepad,
   FaCheckCircle,
   FaTimesCircle,
+  FaStar,
 } from "react-icons/fa"; // Import icons
 
 const ParticipantDetailsModal = ({ participant, onHide }) => {
@@ -38,9 +39,15 @@ const ParticipantDetailsModal = ({ participant, onHide }) => {
   return (
     <Modal show={true} onHide={onHide} centered size="lg" scrollable>
       <Modal.Header closeButton>
-        <Modal.Title className="d-flex align-items-center">
-          <span className="me-3">{participant.name}</span>
+        <Modal.Title className="d-flex align-items-center flex-wrap gap-2">
+          <span className="me-2">{participant.name}</span>
           <Badge bg="secondary">Rank: {participant.rank}</Badge>
+          {participant.allCompleted === "Yes" && (
+            <Badge bg="success" className="d-flex align-items-center">
+              <FaStar className="me-1" size={12} />
+              Completed
+            </Badge>
+          )}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
