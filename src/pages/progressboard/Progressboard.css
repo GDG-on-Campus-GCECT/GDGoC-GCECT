@@ -1,3 +1,5 @@
+/* Import Google Fonts for elegant typography */
+@import url("https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single+Ink:wght@100..900&family=Bitcount+Grid+Single:wght@100..900&family=Bitcount+Prop+Double+Ink:wght@100..900&family=Dancing+Script:wght@400..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Licorice&family=Pacifico&family=Press+Start+2P&display=swap");
 /* ==========================================================================
    Progressboard Page Layout
    ========================================================================== */
@@ -7,6 +9,121 @@
   min-height: 100vh;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Elegant Progressboard Title Styling
+   ========================================================================== */
+
+.progressboard-elegant-title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 3rem;
+  font-weight: 400;
+  color: #ea4335; /* Google Red solid color */
+  margin-bottom: 0.75rem;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  position: relative;
+  padding-bottom: 0.2rem;
+}
+
+.progressboard-elegant-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(66, 133, 244, 0.1) 0%,
+    rgba(234, 67, 53, 0.1) 25%,
+    rgba(251, 188, 5, 0.1) 50%,
+    rgba(52, 168, 83, 0.1) 75%,
+    rgba(66, 133, 244, 0.1) 100%
+  );
+  border-radius: 12px;
+  z-index: -1;
+  filter: blur(20px);
+  opacity: 0.6;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+.progressboard-elegant-subtitle {
+  font-family: "Bitcount Grid Single", monospace;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #6c757d;
+  margin-bottom: 0;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.progressboard-title-container:hover .progressboard-elegant-title {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}
+
+.progressboard-title-container:hover .progressboard-elegant-subtitle {
+  color: #495057;
+  opacity: 1;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glow pulse animation */
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+/* Responsive adjustments for the elegant title */
+@media (max-width: 768px) {
+  .progressboard-elegant-title {
+    font-size: 3.5rem;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+    padding-bottom: 0.15rem;
+  }
+
+  .progressboard-elegant-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+  }
+}
+
+@media (max-width: 480px) {
+  .progressboard-elegant-title {
+    font-size: 2.8rem;
+    letter-spacing: 0;
+    line-height: 1.3;
+    padding-bottom: 0.1rem;
+  }
+
+  .progressboard-elegant-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+  }
 }
 
 /* ==========================================================================
