@@ -59,8 +59,8 @@ const LinearTierProgress = ({ participants = [] }) => {
       requiredParticipants: 70,
       icon: FaTrophy,
       position: 66.66,
-      color: "#c0c0c0",
-      bgColor: "#f0f0f0",
+      color: "#cd7f32",
+      bgColor: "#f4e4bc",
       image: tier2Image,
       rewards: [
         {
