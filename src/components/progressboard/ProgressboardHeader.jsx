@@ -11,7 +11,7 @@ const ProgressboardHeader = ({ participants }) => {
               Cloud Study Jams Progressboard
             </h1>
             <p className="text-muted mb-0">
-              If your name is not on the list, contact an organizers.
+              If your name is not on the list, contact the organizer.
             </p>
           </div>
         </div>
