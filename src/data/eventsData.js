@@ -4,6 +4,8 @@ import IntroductoryEvent from "../assets/images/events/intro.webp";
 import CloudStudyJam from "../assets/images/events/cloud.webp";
 import Hacktoberfest from "../assets/images/events/hacktoberfest.webp";
 import GeminiHackDay from "../assets/images/events/hackday.webp";
+import Github from "../assets/images/events/github.webp";
+
 const allEvents = [
   {
     id: 1,
@@ -40,6 +42,14 @@ const allEvents = [
     description: "A 5-hour celebration of innovation powered by **MLH and Google Gemini!** Join the brightest minds at GCECT to brainstorm, build prototypes, and showcase tech solutions. Whether you're creating web apps, data tools, or innovative designs, this hack day is your chance to learn, experiment, and collaborate with like-minded innovators in a fast-paced, friendly environment.",
     date: "2025-11-03",
     link: "https://forms.gle/SfAdwwijWiaJSebe8 ",
+  },
+  {
+    id: 5,
+    image: Github,
+    title: 'GitHub Profile Setup and Achievements',
+    description: "Ready to dive into tech collaboration and version control? Join us for a high-energy session split into two parts: **GitHub 101** - Learn the essentials of version control, create your first repository, make commits, and understand branches and Pull Requests. **Study Jams Success Party** - Celebrate our Google Cloud Study Jam finishers with badge distribution, networking, and refreshments. Perfect for kickstarting your tech skills and celebrating with the community!",
+    date: "2025-11-01",
+    link: "https://gdg.community.dev/events/details/google-gdg-on-campus-government-college-of-engineering-and-ceramic-technology-kolkata-india-presents-github-profile-setup-and-achievements/",
   },
 ];
 
