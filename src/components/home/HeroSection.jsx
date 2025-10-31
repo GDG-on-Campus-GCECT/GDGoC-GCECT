@@ -2,6 +2,7 @@ import React from "react";
 import InteractiveGrid from "./InteractiveGrid";
 import Button from "../common/Button";
 import ColorfulTitle from "../common/ColorfulTitle";
+import EventCountdown from "./EventCountdown";
 import villagerImage from "../../assets/images/floating/prize.png";
 import ToolManager from "./ToolManager"; // 👈 Import the ToolManager
 import "./HeroSection.css"; // Ensure your CSS is here
@@ -11,6 +12,7 @@ function HeroSection() {
     <div className="hero-minecraft">
       <InteractiveGrid />
       <div className="hero-content text-center">
+        <EventCountdown />
         <ColorfulTitle mainText="GDG ON CAMPUS" subText="GCECT" />
 
         <p className="lead text-muted my-4">
